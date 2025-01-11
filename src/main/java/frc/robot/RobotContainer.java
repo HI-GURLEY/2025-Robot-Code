@@ -36,10 +36,12 @@ public class RobotContainer {
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
     private final JoystickButton driveToPoint = new JoystickButton(driver, XboxController.Button.kX.value);
+    private final JoystickButton climbButton = new JoystickButton(driver, rotationAxis);
 
     /* Subsystems */
     private final photonVision s_PhotonVision = new photonVision(Constants.vision.localizationCameraOneName, Constants.vision.localizationCameraTwoName);
     private final Swerve s_Swerve = new Swerve(s_PhotonVision);
+    private final Climber s_Climber = new Climber();
 
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -72,6 +74,7 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
+        climbButton.onTrue(new InstantCommand(() -> s_Climber.Climb()));
         driveToPoint.whileTrue(Swerve.pathfindCommand());
     }
 
