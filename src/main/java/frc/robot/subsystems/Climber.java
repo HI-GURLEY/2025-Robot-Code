@@ -41,7 +41,7 @@ public class Climber extends SubsystemBase
         if(!isClimbing & active)
         {
             m_climbMotor.set(climbSpeed);
-          isClimbing = true;
+            isClimbing = true;
         }
         else
         {
