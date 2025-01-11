@@ -14,14 +14,14 @@ import frc.robot.Constants.ClimbConstants;
 public class Climber extends SubsystemBase
 {
     private TalonFX m_climbMotor;
-    DigitalInput limitSwitch = new DigitalInput(-1); //TODO: Assign the proper port
-
+    DigitalInput limitSwitch; 
     double climbSpeed = 1;
     double timeOfClimb = 1;
     
     public Climber()
     {
         m_climbMotor = new TalonFX(ClimbConstants.climbMotorID);
+        limitSwitch = new DigitalInput(-1); //TODO: Assign the proper port
     }
 
     @Override
