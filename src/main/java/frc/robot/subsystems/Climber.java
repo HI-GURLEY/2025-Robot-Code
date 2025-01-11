@@ -17,11 +17,14 @@ public class Climber extends SubsystemBase
     DigitalInput limitSwitch; 
     double climbSpeed = 1;
     double timeOfClimb = 1;
+    boolean isClimbing;
+    boolean active;
     
     public Climber()
     {
         m_climbMotor = new TalonFX(ClimbConstants.climbMotorID);
-        limitSwitch = new DigitalInput(-1); //TODO: Assign the proper port
+        limitSwitch = new DigitalInput(-1); //This won't function until you assign the proper port
+        active = true;
     }
 
     @Override
@@ -29,13 +32,29 @@ public class Climber extends SubsystemBase
     {
         if (limitSwitch.get())
         {
-            Stop();
+            Deactivate();
         }
     }
 
     public void Climb()
     {
-        m_climbMotor.set(climbSpeed);
+        if(active)
+            if(!isClimbing)
+            {
+              m_climbMotor.set(climbSpeed);
+              isClimbing = true;
+            }
+            else
+            {
+                m_climbMotor.stopMotor();
+                isClimbing = false;
+            }
+    }
+
+    public void Deactivate()
+    {
+        m_climbMotor.stopMotor();
+        active = false;
     }
 
     public void Stop()
