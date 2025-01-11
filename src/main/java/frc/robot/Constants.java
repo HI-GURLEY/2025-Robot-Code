@@ -199,4 +199,20 @@ public final class Constants {
             new TrapezoidProfile.Constraints(
                 kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
     }
+
+    public static final class Reefscape {
+        enum ScoringPositionID {
+            LEFT_L2,
+            RIGHT_L2,
+            LEFT_L3,
+            RIGHT_L3,
+            LEFT_L4,
+            RIGHT_L4
+        }
+        //TODO: Set to actual port numbers
+        public static final int coralElevatorMotor1ID = -1;
+        public static final int coralElevatorMotor2ID = -1;
+        public static final int coralIntakeMotorID = -1;
+        public static final int coralArmMotorID = -1;
+    }
 }
