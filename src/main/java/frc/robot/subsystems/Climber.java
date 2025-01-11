@@ -38,17 +38,16 @@ public class Climber extends SubsystemBase
 
     public void Climb()
     {
-        if(active)
-            if(!isClimbing)
-            {
-              m_climbMotor.set(climbSpeed);
-              isClimbing = true;
-            }
-            else
-            {
-                m_climbMotor.stopMotor();
-                isClimbing = false;
-            }
+        if(!isClimbing & active)
+        {
+            m_climbMotor.set(climbSpeed);
+          isClimbing = true;
+        }
+        else
+        {
+            m_climbMotor.stopMotor();
+            isClimbing = false;
+        }
     }
 
     public void Deactivate()
